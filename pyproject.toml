@@ -3,18 +3,20 @@ name = "frappe_mcp"
 authors = [
     { name = "Shaid Azmin", email = "query@avolytic.com"}
 ]
-description = "A complete MCP for Frappe Framwork Apps"
+description = "Universal MCP server for any Frappe app. Permission-scoped tools, semantic search, and a desk assistant."
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
 dependencies = [
-    # "frappe~=15.0.0" # Installed and managed by bench.
+    # Embeddings are plain HTTP. qdrant-client is the only extra runtime
+    # dependency, and semantic search no-ops cleanly when it is absent
+    # or when Qdrant is not configured.
+    "qdrant-client==1.19.0",
 ]
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]
 build-backend = "flit_core.buildapi"
 
-# These dependencies are only installed when developer mode is enabled
 [tool.bench.dev-dependencies]
 # package_name = "~=1.1.0"

@@ -1,0 +1,156 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"mcpHdr1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"mcpSc0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Connect\",\"col\":3}},{\"id\":\"mcpSc1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"MCP Connector\",\"col\":3}},{\"id\":\"mcpSc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"MCP Settings\",\"col\":3}},{\"id\":\"mcpSc3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tool Log\",\"col\":3}},{\"id\":\"mcpSp1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"mcpHdr2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Setup</b></span>\",\"col\":12}},{\"id\":\"mcpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Connect\",\"col\":4}},{\"id\":\"mcpC2\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"mcpC3\",\"type\":\"card\",\"data\":{\"card_name\":\"Logs\",\"col\":4}},{\"id\":\"mcpC4\",\"type\":\"card\",\"data\":{\"card_name\":\"Assistant\",\"col\":4}}]",
+ "creation": "2026-11-05 16:30:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "setting",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Frappe MCP",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Connect",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Connect",
+   "link_count": 0,
+   "link_to": "mcp-connect",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "MCP Connector",
+   "link_count": 0,
+   "link_to": "MCP Connector",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "MCP Settings",
+   "link_count": 0,
+   "link_to": "MCP Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Logs",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Query Log",
+   "link_count": 0,
+   "link_to": "MCP Query Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tool Log",
+   "link_count": 0,
+   "link_to": "MCP Tool Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assistant",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Chat Sessions",
+   "link_count": 0,
+   "link_to": "MCP Chat Session",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-05 16:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Mcp",
+ "name": "Frappe MCP",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "MCP User"
+  }
+ ],
+ "sequence_id": 25.0,
+ "shortcuts": [
+  {
+   "color": "Green",
+   "label": "Connect",
+   "link_to": "mcp-connect",
+   "type": "Page"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "MCP Connector",
+   "link_to": "MCP Connector",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "label": "MCP Settings",
+   "link_to": "MCP Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tool Log",
+   "link_to": "MCP Tool Log",
+   "type": "DocType"
+  }
+ ],
+ "title": "Frappe MCP"
+}

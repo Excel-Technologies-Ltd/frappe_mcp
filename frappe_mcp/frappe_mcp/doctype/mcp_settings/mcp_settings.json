@@ -1,0 +1,367 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_tab",
+  "enable_ai_assistant",
+  "enable_query_logging",
+  "enable_reports_tool",
+  "enable_tool_logging",
+  "column_break_general",
+  "max_result_rows",
+  "query_timeout_seconds",
+  "schema_cache_ttl_minutes",
+  "log_retention_days",
+  "default_rate_limit",
+  "actions_tab",
+  "actions_note",
+  "allow_read",
+  "allow_create",
+  "allow_update",
+  "column_break_actions",
+  "allow_submit",
+  "allow_cancel",
+  "allow_delete",
+  "llm_tab",
+  "llm_provider",
+  "provider_note",
+  "ollama_section",
+  "ollama_base_url",
+  "ollama_model",
+  "openai_section",
+  "openai_api_key",
+  "openai_model",
+  "compatible_section",
+  "compatible_base_url",
+  "compatible_api_key",
+  "compatible_model",
+  "semantic_tab",
+  "enable_semantic_search",
+  "qdrant_enabled",
+  "embedding_model",
+  "embedding_provider",
+  "qdrant_section",
+  "qdrant_url",
+  "qdrant_api_key",
+  "column_break_qdrant",
+  "qdrant_collection_prefix",
+  "embedding_base_url",
+  "embedding_api_key",
+  "connection_tab",
+  "mcp_allowed_origins",
+  "connection_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_tab",
+   "fieldtype": "Tab Break",
+   "label": "General"
+  },
+  {
+   "default": "0",
+   "description": "Master switch for the in-desk assistant. MCP connectors keep working when this is off.",
+   "fieldname": "enable_ai_assistant",
+   "fieldtype": "Check",
+   "label": "Enable AI Assistant"
+  },
+  {
+   "default": "1",
+   "description": "Store each assistant question, the answer, DocTypes touched, and duration. Document field dumps are not given their own columns.",
+   "fieldname": "enable_query_logging",
+   "fieldtype": "Check",
+   "label": "Enable Query Logging"
+  },
+  {
+   "default": "1",
+   "description": "Let tools search and run this site's Query and Script Reports through Frappe's report engine.",
+   "fieldname": "enable_reports_tool",
+   "fieldtype": "Check",
+   "label": "Enable Reports Tool"
+  },
+  {
+   "default": "1",
+   "description": "Store each MCP and assistant tool call: tool name, DocType, redacted arguments, and a short result. Not the document body.",
+   "fieldname": "enable_tool_logging",
+   "fieldtype": "Check",
+   "label": "Enable Tool Logging"
+  },
+  {
+   "fieldname": "column_break_general",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "500",
+   "fieldname": "max_result_rows",
+   "fieldtype": "Int",
+   "label": "Maximum Result Rows",
+   "reqd": 1
+  },
+  {
+   "default": "30",
+   "fieldname": "query_timeout_seconds",
+   "fieldtype": "Int",
+   "label": "Query Timeout (seconds)",
+   "reqd": 1
+  },
+  {
+   "default": "60",
+   "fieldname": "schema_cache_ttl_minutes",
+   "fieldtype": "Int",
+   "label": "Schema Cache TTL (minutes)",
+   "reqd": 1
+  },
+  {
+   "default": "90",
+   "description": "Delete query and tool logs older than this many days. 0 keeps them.",
+   "fieldname": "log_retention_days",
+   "fieldtype": "Int",
+   "label": "Log Retention (days)"
+  },
+  {
+   "default": "120",
+   "description": "Used when a connector's own rate limit is blank.",
+   "fieldname": "default_rate_limit",
+   "fieldtype": "Int",
+   "label": "Default Rate Limit per Minute"
+  },
+  {
+   "fieldname": "actions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Document Actions"
+  },
+  {
+   "fieldname": "actions_note",
+   "fieldtype": "HTML",
+   "options": "<div class='text-muted small'>Create, Read, and Update are allowed by default. Cancel, Delete, and Submit stay off until you enable them here. A connector can turn an action off, but it cannot turn Cancel, Delete, or Submit on unless this page allows it. Frappe permissions for the connector's user still apply on top of these switches.</div>"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_read",
+   "fieldtype": "Check",
+   "label": "Allow Read"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_create",
+   "fieldtype": "Check",
+   "label": "Allow Create"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_update",
+   "fieldtype": "Check",
+   "label": "Allow Update"
+  },
+  {
+   "fieldname": "column_break_actions",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_submit",
+   "fieldtype": "Check",
+   "label": "Allow Submit"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_cancel",
+   "fieldtype": "Check",
+   "label": "Allow Cancel"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_delete",
+   "fieldtype": "Check",
+   "label": "Allow Delete"
+  },
+  {
+   "fieldname": "llm_tab",
+   "fieldtype": "Tab Break",
+   "label": "LLM Provider"
+  },
+  {
+   "default": "Ollama",
+   "fieldname": "llm_provider",
+   "fieldtype": "Select",
+   "label": "LLM Provider",
+   "options": "Ollama\nOpenAI\nCompatible",
+   "reqd": 1
+  },
+  {
+   "fieldname": "provider_note",
+   "fieldtype": "HTML",
+   "options": "<div class='text-muted small'>The desk assistant calls this provider. MCP connectors do not use it: each user points Claude, Cursor, ChatGPT, or any other MCP client at their own connector. The provider must support OpenAI-style tool calling.</div>"
+  },
+  {
+   "depends_on": "eval:doc.llm_provider == 'Ollama'",
+   "fieldname": "ollama_section",
+   "fieldtype": "Section Break",
+   "label": "Ollama"
+  },
+  {
+   "default": "http://localhost:11434",
+   "fieldname": "ollama_base_url",
+   "fieldtype": "Data",
+   "label": "Ollama Base URL"
+  },
+  {
+   "default": "llama3.1:8b",
+   "description": "Must already be pulled, and must support tool calling.",
+   "fieldname": "ollama_model",
+   "fieldtype": "Data",
+   "label": "Ollama Model"
+  },
+  {
+   "depends_on": "eval:doc.llm_provider == 'OpenAI'",
+   "fieldname": "openai_section",
+   "fieldtype": "Section Break",
+   "label": "OpenAI"
+  },
+  {
+   "fieldname": "openai_api_key",
+   "fieldtype": "Password",
+   "label": "OpenAI API Key"
+  },
+  {
+   "default": "gpt-4o-mini",
+   "fieldname": "openai_model",
+   "fieldtype": "Data",
+   "label": "OpenAI Model"
+  },
+  {
+   "depends_on": "eval:doc.llm_provider == 'Compatible'",
+   "fieldname": "compatible_section",
+   "fieldtype": "Section Break",
+   "label": "OpenAI-Compatible Endpoint"
+  },
+  {
+   "description": "Example: https://api.groq.com/openai/v1",
+   "fieldname": "compatible_base_url",
+   "fieldtype": "Data",
+   "label": "Base URL"
+  },
+  {
+   "fieldname": "compatible_api_key",
+   "fieldtype": "Password",
+   "label": "API Key"
+  },
+  {
+   "fieldname": "compatible_model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "semantic_tab",
+   "fieldtype": "Tab Break",
+   "label": "Semantic Search"
+  },
+  {
+   "default": "0",
+   "description": "Turns on meaning search. Structured tools keep working when this is off.",
+   "fieldname": "enable_semantic_search",
+   "fieldtype": "Check",
+   "label": "Enable Semantic Search"
+  },
+  {
+   "default": "0",
+   "description": "Qdrant must be reachable. Semantic search runs only when this and Enable Semantic Search are both on.",
+   "fieldname": "qdrant_enabled",
+   "fieldtype": "Check",
+   "label": "Qdrant Enabled"
+  },
+  {
+   "description": "Model that produces vectors. Examples: nomic-embed-text (Ollama), text-embedding-3-small (OpenAI).",
+   "fieldname": "embedding_model",
+   "fieldtype": "Data",
+   "label": "Embedding Model"
+  },
+  {
+   "default": "Follow LLM",
+   "fieldname": "embedding_provider",
+   "fieldtype": "Select",
+   "label": "Embedding Provider",
+   "options": "Follow LLM\nOllama\nOpenAI\nCompatible"
+  },
+  {
+   "depends_on": "eval:doc.qdrant_enabled",
+   "fieldname": "qdrant_section",
+   "fieldtype": "Section Break",
+   "label": "Qdrant"
+  },
+  {
+   "default": "http://localhost:6333",
+   "fieldname": "qdrant_url",
+   "fieldtype": "Data",
+   "label": "Qdrant URL"
+  },
+  {
+   "fieldname": "qdrant_api_key",
+   "fieldtype": "Password",
+   "label": "Qdrant API Key"
+  },
+  {
+   "fieldname": "column_break_qdrant",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Prefixed onto collection names so sites that share one Qdrant server stay apart. Defaults to the site name.",
+   "fieldname": "qdrant_collection_prefix",
+   "fieldtype": "Data",
+   "label": "Collection Prefix"
+  },
+  {
+   "depends_on": "eval:doc.embedding_provider == 'Compatible'",
+   "description": "OpenAI-compatible embeddings base URL. Blank uses the chat Compatible Base URL.",
+   "fieldname": "embedding_base_url",
+   "fieldtype": "Data",
+   "label": "Embedding Base URL"
+  },
+  {
+   "description": "Optional. Used for a Compatible embeddings host, or as a fallback OpenAI key.",
+   "fieldname": "embedding_api_key",
+   "fieldtype": "Password",
+   "label": "Embedding API Key"
+  },
+  {
+   "fieldname": "connection_tab",
+   "fieldtype": "Tab Break",
+   "label": "MCP Endpoint"
+  },
+  {
+   "default": "*",
+   "description": "Browser origins allowed to call /mcp. * allows any origin. Comma-separated list to restrict.",
+   "fieldname": "mcp_allowed_origins",
+   "fieldtype": "Data",
+   "label": "Allowed Origins"
+  },
+  {
+   "fieldname": "connection_note",
+   "fieldtype": "HTML",
+   "options": "<div class='text-muted small'>Each user creates an MCP Connector and receives a token. Clients POST JSON-RPC to <b>/mcp</b> with <code>Authorization: Bearer &lt;token&gt;</code>. The connector runs as that user. Create, Read, and Update are on unless you turn them off. Cancel and Delete run only when both this page and the connector allow them.</div>"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "module": "Frappe Mcp",
+ "name": "MCP Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

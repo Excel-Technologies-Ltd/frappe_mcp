@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "access_hash",
+  "refresh_hash",
+  "client_id",
+  "user",
+  "connector",
+  "expires",
+  "refresh_expires"
+ ],
+ "fields": [
+  {
+   "fieldname": "access_hash",
+   "fieldtype": "Data",
+   "label": "Access Hash",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "refresh_hash",
+   "fieldtype": "Data",
+   "label": "Refresh Hash",
+   "unique": 1
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "connector",
+   "fieldtype": "Link",
+   "label": "Connector",
+   "options": "MCP Connector",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expires",
+   "fieldtype": "Datetime",
+   "label": "Expires",
+   "reqd": 1
+  },
+  {
+   "fieldname": "refresh_expires",
+   "fieldtype": "Datetime",
+   "label": "Refresh Expires"
+  }
+ ],
+ "links": [],
+ "module": "Frappe Mcp",
+ "name": "MCP OAuth Token",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

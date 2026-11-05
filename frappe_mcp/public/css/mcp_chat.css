@@ -1,0 +1,75 @@
+.mcp-assistant-launcher {
+	position: fixed;
+	right: 18px;
+	bottom: 18px;
+	z-index: 1030;
+	border: 0;
+	border-radius: 999px;
+	padding: 10px 14px;
+	background: #1f6f4a;
+	color: #fff;
+	font-weight: 600;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.mcp-assistant {
+	position: fixed;
+	right: 18px;
+	bottom: 68px;
+	z-index: 1030;
+	width: min(380px, calc(100vw - 24px));
+	height: min(520px, calc(100vh - 100px));
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border: 1px solid #d7dce3;
+	border-radius: 12px;
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+	overflow: hidden;
+}
+
+.mcp-assistant[hidden] {
+	display: none !important;
+}
+
+.mcp-assistant-header,
+.mcp-assistant-form {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	padding: 10px 12px;
+	background: #f7f8fa;
+}
+
+.mcp-assistant-log {
+	flex: 1;
+	overflow: auto;
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.mcp-line {
+	max-width: 92%;
+	padding: 8px 10px;
+	border-radius: 10px;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.mcp-user {
+	align-self: flex-end;
+	background: #e7f5ee;
+}
+
+.mcp-bot {
+	align-self: flex-start;
+	background: #f2f4f7;
+}
+
+.mcp-assistant-form textarea {
+	flex: 1;
+	resize: none;
+}

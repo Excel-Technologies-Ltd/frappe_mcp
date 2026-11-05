@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "connector",
+  "status",
+  "column_break_status",
+  "duration_seconds",
+  "tool_call_count",
+  "query",
+  "answer",
+  "doctypes_touched",
+  "error"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "connector",
+   "fieldtype": "Link",
+   "label": "Connector",
+   "options": "MCP Connector",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Success\nError",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "duration_seconds",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Duration (s)",
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tool_call_count",
+   "fieldtype": "Int",
+   "label": "Tool Calls",
+   "read_only": 1
+  },
+  {
+   "fieldname": "query",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Question",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "description": "The assistant's answer. Raw document dumps are not stored as their own fields.",
+   "fieldname": "answer",
+   "fieldtype": "Long Text",
+   "label": "Answer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "doctypes_touched",
+   "fieldtype": "Small Text",
+   "label": "DocTypes Touched",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.status == 'Error'",
+   "fieldname": "error",
+   "fieldtype": "Small Text",
+   "label": "Error",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "module": "Frappe Mcp",
+ "name": "MCP Query Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

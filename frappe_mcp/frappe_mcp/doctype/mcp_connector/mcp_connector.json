@@ -1,0 +1,256 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "connector_name",
+  "user",
+  "user_full_name",
+  "user_email",
+  "enabled",
+  "column_break_main",
+  "expires_on",
+  "rate_limit_per_minute",
+  "token_prefix",
+  "last_used",
+  "permissions_section",
+  "allow_read",
+  "allow_create",
+  "allow_update",
+  "column_break_perm",
+  "allow_submit",
+  "allow_cancel",
+  "allow_delete",
+  "scope_section",
+  "allowed_doctypes",
+  "column_break_scope",
+  "blocked_doctypes",
+  "ip_allowlist",
+  "connection_section",
+  "endpoint",
+  "client_config",
+  "token_hash",
+  "api_token"
+ ],
+ "fields": [
+  {
+   "default": "MCP-.YYYY.-.#####",
+   "description": "Document name. Example: MCP-2026-00001.",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "MCP-.YYYY.-.#####\nMCP-CONN-.YYYY.-.#####",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "connector_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Connector Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "user.full_name",
+   "fieldname": "user_full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "User Full Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "user.email",
+   "fieldname": "user_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "User Email",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expires_on",
+   "fieldtype": "Date",
+   "label": "Expires On"
+  },
+  {
+   "default": "120",
+   "description": "Requests per minute. 0 means no limit.",
+   "fieldname": "rate_limit_per_minute",
+   "fieldtype": "Int",
+   "label": "Rate Limit per Minute"
+  },
+  {
+   "fieldname": "token_prefix",
+   "fieldtype": "Data",
+   "label": "Token Prefix",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_used",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Last Used",
+   "read_only": 1
+  },
+  {
+   "fieldname": "permissions_section",
+   "fieldtype": "Section Break",
+   "label": "Document Actions"
+  },
+  {
+   "default": "1",
+   "description": "Read is on by default. The user's Frappe permission still applies.",
+   "fieldname": "allow_read",
+   "fieldtype": "Check",
+   "label": "Allow Read"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_create",
+   "fieldtype": "Check",
+   "label": "Allow Create"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_update",
+   "fieldtype": "Check",
+   "label": "Allow Update"
+  },
+  {
+   "fieldname": "column_break_perm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Off unless MCP Settings also allows Submit.",
+   "fieldname": "allow_submit",
+   "fieldtype": "Check",
+   "label": "Allow Submit"
+  },
+  {
+   "default": "0",
+   "description": "Off unless MCP Settings also allows Cancel.",
+   "fieldname": "allow_cancel",
+   "fieldtype": "Check",
+   "label": "Allow Cancel"
+  },
+  {
+   "default": "0",
+   "description": "Off unless MCP Settings also allows Delete.",
+   "fieldname": "allow_delete",
+   "fieldtype": "Check",
+   "label": "Allow Delete"
+  },
+  {
+   "fieldname": "scope_section",
+   "fieldtype": "Section Break",
+   "label": "DocType Scope"
+  },
+  {
+   "description": "One DocType per line. Blank means every DocType this user can already access.",
+   "fieldname": "allowed_doctypes",
+   "fieldtype": "Small Text",
+   "label": "Allowed DocTypes"
+  },
+  {
+   "fieldname": "column_break_scope",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "One DocType per line. These are never exposed, even if the user can read them in the desk.",
+   "fieldname": "blocked_doctypes",
+   "fieldtype": "Small Text",
+   "label": "Blocked DocTypes"
+  },
+  {
+   "description": "Optional. Comma or newline separated IPs or CIDR ranges. Blank allows any IP.",
+   "fieldname": "ip_allowlist",
+   "fieldtype": "Small Text",
+   "label": "IP Allow List"
+  },
+  {
+   "fieldname": "connection_section",
+   "fieldtype": "Section Break",
+   "label": "Connection"
+  },
+  {
+   "fieldname": "endpoint",
+   "fieldtype": "Data",
+   "label": "Endpoint",
+   "read_only": 1
+  },
+  {
+   "description": "Paste this into Claude, Cursor, or any MCP client. Replace <token> with the token shown once when you save or regenerate.",
+   "fieldname": "client_config",
+   "fieldtype": "Code",
+   "label": "Client Config",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "token_hash",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Token Hash",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "api_token",
+   "fieldtype": "Password",
+   "hidden": 1,
+   "label": "API Token",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "module": "Frappe Mcp",
+ "name": "MCP Connector",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "MCP User",
+   "write": 1
+  }
+ ],
+ "search_fields": "connector_name,user,user_full_name,user_email",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

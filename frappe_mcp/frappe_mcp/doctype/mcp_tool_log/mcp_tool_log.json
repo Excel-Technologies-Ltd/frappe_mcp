@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "connector",
+  "source",
+  "tool_name",
+  "status",
+  "column_break_1",
+  "doctype_name",
+  "duration_seconds",
+  "arguments",
+  "result_summary"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "connector",
+   "fieldtype": "Link",
+   "label": "Connector",
+   "options": "MCP Connector",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Source",
+   "options": "MCP\nAssistant",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "tool_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tool",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Success\nError",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "doctype_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "duration_seconds",
+   "fieldtype": "Float",
+   "label": "Duration (s)",
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "description": "Redacted arguments. Tokens, passwords, and long values are stripped.",
+   "fieldname": "arguments",
+   "fieldtype": "Long Text",
+   "label": "Arguments",
+   "read_only": 1
+  },
+  {
+   "description": "Short outcome such as created Sales Invoice SINV-0001. Document bodies are not stored.",
+   "fieldname": "result_summary",
+   "fieldtype": "Small Text",
+   "label": "Result Summary",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "module": "Frappe Mcp",
+ "name": "MCP Tool Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

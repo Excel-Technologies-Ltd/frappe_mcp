@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "code_hash",
+  "client_id",
+  "user",
+  "redirect_uri",
+  "code_challenge",
+  "expires",
+  "used"
+ ],
+ "fields": [
+  {
+   "fieldname": "code_hash",
+   "fieldtype": "Data",
+   "label": "Code Hash",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "redirect_uri",
+   "fieldtype": "Data",
+   "label": "Redirect URI",
+   "length": 750,
+   "reqd": 1
+  },
+  {
+   "fieldname": "code_challenge",
+   "fieldtype": "Data",
+   "label": "Code Challenge"
+  },
+  {
+   "fieldname": "expires",
+   "fieldtype": "Datetime",
+   "label": "Expires",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "used",
+   "fieldtype": "Check",
+   "label": "Used"
+  }
+ ],
+ "links": [],
+ "module": "Frappe Mcp",
+ "name": "MCP OAuth Code",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

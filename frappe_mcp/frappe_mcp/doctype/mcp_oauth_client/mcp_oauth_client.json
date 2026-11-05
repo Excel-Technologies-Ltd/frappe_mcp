@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "autoname": "field:client_id",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "client_id",
+  "client_name",
+  "auth_method",
+  "is_default",
+  "client_secret",
+  "client_secret_hash",
+  "redirect_uris"
+ ],
+ "fields": [
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID",
+   "length": 140,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "Client Name"
+  },
+  {
+   "fieldname": "auth_method",
+   "fieldtype": "Select",
+   "label": "Token Auth Method",
+   "options": "none\nclient_secret_post\nclient_secret_basic"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Default Client"
+  },
+  {
+   "fieldname": "client_secret",
+   "fieldtype": "Password",
+   "label": "Client Secret"
+  },
+  {
+   "fieldname": "client_secret_hash",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Client Secret Hash"
+  },
+  {
+   "fieldname": "redirect_uris",
+   "fieldtype": "Long Text",
+   "label": "Redirect URIs"
+  }
+ ],
+ "links": [],
+ "module": "Frappe Mcp",
+ "name": "MCP OAuth Client",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
